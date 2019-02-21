@@ -51,10 +51,10 @@ class ResumePage extends Component {
 
                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around', flexWrap: 'wrap' }}>
                         <Document file={resume} onLoadSuccess={this.onDocumentLoadSuccess}  >
-                            <Page pageNumber={1} height={window.innerHeight * 0.8} />
+                            <Page pageNumber={1} height={window.innerHeight * 0.75} />
                         </Document>
                         <Document file={resume} onLoadSuccess={this.onDocumentLoadSuccess} >
-                            <Page pageNumber={2} height={window.innerHeight * 0.8} />
+                            <Page pageNumber={2} height={window.innerHeight * 0.75} />
                         </Document>
                     </div>
                 </div>
