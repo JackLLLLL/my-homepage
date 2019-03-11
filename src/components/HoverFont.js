@@ -33,7 +33,7 @@ class HoverFont extends Component {
 
     render () {
         return (
-            <span style={{ ...this.props.style, ... this.state.fontStyle, fontFamily: 'Righteous', width: 'fit-content', height: 'fit-content' }} 
+            <span style={{ ...this.props.style, ...this.state.fontStyle, fontFamily: 'Righteous', width: 'fit-content', height: 'fit-content' }} 
                 onMouseEnter={this.onMouseEnter}
                 onMouseLeave={this.onMouseLeave}
             >

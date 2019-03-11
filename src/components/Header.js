@@ -18,7 +18,7 @@ const Header = ({ title }) => {
                 { title }
             </span>
             
-            <div className="menu" style={{ position: 'absolute', right: '5vw' }}>
+            <div className="menu" style={{ position: 'absolute', right: '5vw', zIndex: 999 }}>
                 <Link key="home" to='/'>
                     <Tooltip title='Homepage'>
                         <Icon type="home" style={{ color: 'white', fontSize: '5vmin', marginTop: '10vh', marginRight: '5vw' }} />
