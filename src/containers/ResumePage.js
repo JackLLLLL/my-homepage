@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import { Icon, Tooltip } from 'antd';
-import { Link } from 'react-router-dom';
-import { Document, Page, pdfjs } from "react-pdf";
+import { Carousel } from 'antd';
 import Header from '../components/Header';
 import Background from '../components/Background';
 import Footer from '../components/Footer';
-import MouseFollower from '../components/MouseFollower';
 import img from '../images/background.jpg';
-import cursor from '../images/planet.ico';
-import resume from '../images/resume.pdf';
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+import cursor_rocket from '../images/rocket.svg';
+import cursor_up from '../images/up.ico';
+import cursor_down from '../images/down.ico';
+import resume1 from '../images/Resume-1.jpg';
+import resume2 from '../images/Resume-2.jpg';
 
 
 class ResumePage extends Component {
@@ -37,26 +36,15 @@ class ResumePage extends Component {
 
     render () {
         return (
-            <div className="App" onMouseMove={this.onMouseMove} onTouchMove={this.onMouseMove} style={{ cursor: `url("${cursor}"), auto`, }}>
+            <div className="App" onMouseMove={this.onMouseMove} onTouchMove={this.onMouseMove} style={{ cursor: `url("${cursor_rocket}"), auto`, }}>
                 <Background img={img} />
                 <Header title={`JackLLLLL's Resume`} />
-                <MouseFollower mouseX={this.state.mouseX} mouseY={this.state.mouseY}/>
     
                 <div className="App-content" >
-                    <Link key="home" to='/'>
-                        <Tooltip title='Go back homepage'>
-                            <Icon type="home" style={{ color: 'white', fontSize: '5vmin', position: 'fixed', right: '4vw', top: '4vw' }} />
-                        </Tooltip>
-                    </Link>
-
-                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around', flexWrap: 'wrap' }}>
-                        <Document file={resume} onLoadSuccess={this.onDocumentLoadSuccess}  >
-                            <Page pageNumber={1} height={window.innerHeight * 0.8} />
-                        </Document>
-                        <Document file={resume} onLoadSuccess={this.onDocumentLoadSuccess} >
-                            <Page pageNumber={2} height={window.innerHeight * 0.8} />
-                        </Document>
-                    </div>
+                    <Carousel vertical ref={ ref => this.carousel = ref } >
+                        <div> <img alt='Resume-1' onClick={ () => this.carousel.next() } src={resume1} style={{ width: '80vw', margin: '10vh auto', cursor: `url("${cursor_down}"), auto` }}/> </div>
+                        <div> <img alt='Resume-2' onClick={ () => this.carousel.prev() } src={resume2} style={{ width: '80vw', margin: '10vh auto', cursor: `url("${cursor_up}"), auto` }}/> </div>
+                    </Carousel>
                 </div>
     
                 <Footer/>

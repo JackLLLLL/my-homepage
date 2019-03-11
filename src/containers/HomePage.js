@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Carousel, Icon, Tooltip } from 'antd';
-import { Link } from 'react-router-dom';
 import { randomColor } from 'randomcolor';
 import Header from '../components/Header';
 import Background from '../components/Background';
@@ -9,6 +7,7 @@ import MouseFollower from '../components/MouseFollower';
 import HoverFont from '../components/HoverFont';
 import img from '../images/background.jpg';
 import cursor from '../images/planet.ico';
+import avator from '../images/avator.gif';
 
 
 class HomePage extends Component {
@@ -20,11 +19,8 @@ class HomePage extends Component {
             mouseY: -100,
         }
 
-        this.introduction = `Hi_there!🐱_Welcome_to_my_homepage._You_can_call_me_Jiakang_Liang,_or_just_Jack._
-            _I'm_an_undergraduate_student_of_both_Simon_Fraser_University🇨🇦_and_Zhejiang_University🇨🇳._
-            _And_I_am_going_to_work_soon._You_can_find_my_resume_on_the_top_right_corner_and_contact_me_by_methods_below._
-            _My_website_is_still_under_🚧construction🚧._Blog_and_other_features_are_on_their_way🌠_..._
-        `;
+        this.intro = ['Welcome to my homepage.'];
+        this.about = ['About Me', 'Jiakang Liang 梁嘉康', 'Computer Science Bachelor of', 'Zhejiang University', 'Simon Frazer University', 'Interests:', 'Blockchain', 'Computer Vision', 'Travel', 'Dota2', 'and All New Stuff']
     }
 
     onMouseMove = (e) => {
@@ -34,21 +30,16 @@ class HomePage extends Component {
         })
     }
 
-    renderIntro = () => {
-        const intro = this.introduction.replace(/\s/g, ' ').split('_');
+    renderWords = (words) => {
         const result = [];
         let i=0;
 
-        intro.forEach(element => {
-            if (element === '             ') {
-                result.push(<br key={i++}/>)
-            } else {
-                result.push(
-                    <HoverFont key={i++ } nextColor={randomColor({luminosity: 'bright'})} style={{ fontSize: '5vmin' }} >
-                        {element} &nbsp;
-                    </HoverFont>
-                )
-            }
+        words.forEach(element => {
+            result.push(
+                <HoverFont key={i++ } nextColor={randomColor({luminosity: 'bright'})}>
+                    {element}
+                </HoverFont>
+            )
         });
 
         return result;
@@ -60,14 +51,8 @@ class HomePage extends Component {
                 <Background img={img} />
                 <Header title={`JackLLLLL's Homepage`} />
                 <MouseFollower mouseX={this.state.mouseX} mouseY={this.state.mouseY}/>
-
-                <Link key="resume" to='/resume'>
-                    <Tooltip title='My Resume'>
-                        <Icon type="solution" style={{ color: 'white', fontSize: '5vmin', position: 'absolute', right: '4vw', top: '10vh' }} />
-                    </Tooltip>
-                </Link>
     
-                <div className="App-content">
+                <div className="App-content" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around', marginTop: '10vh' }}>
 
                     <div style={{ 
                         display: 'flex',
@@ -75,10 +60,15 @@ class HomePage extends Component {
                         flexWrap: 'wrap',
                         flexGrow: 0,
                         margin: '10vh 5vw',
+                        fontSize: '10vmin'
                      }}>
-                        { this.renderIntro() }
+                        { this.renderWords(this.intro) }
                     </div>
-                   
+
+                    <div style={{ display: 'flex', flexDirection: 'column', fontSize: '2.5vmin' }}>
+                        <img alt='avator' src={avator} style={{ width: '40vmin' }} /> 
+                        { this.renderWords(this.about) }
+                    </div> 
                 </div>
     
                 <Footer/>
