@@ -1,6 +1,6 @@
 {
   "name": "my-homepage",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "antd": "^3.13.5",
@@ -15,7 +15,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "new": "cd blog; ../node_modules/hexo-cli/bin/hexo new ",
+    "g": "cd blog; ../node_modules/hexo-cli/bin/hexo g"
   },
   "eslintConfig": {
     "extends": "react-app"
